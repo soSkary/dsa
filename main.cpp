@@ -1,8 +1,12 @@
 #include <iostream>
+#include <string>
+#include "ring_buffer.hpp"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+    soskary::Ring_buffer<int> rb_int;
+    soskary::Ring_buffer<std::string> rb_str;
 
     return 0;
 }
