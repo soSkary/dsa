@@ -63,18 +63,18 @@ namespace soskary
     // Default constructor
     template <typename T>
     Ring_buffer<T>::Ring_buffer() :
-        front_index{ 0 }, 
+        front_index{ 0 },
         back_index{ 0 },
-        front_ptr{ container.data() }, 
+        front_ptr{ container.data() },
         back_ptr{ container.data() },
-        container( 16 )
+        container(16)
     {}
     // Copy constructor
     template <typename T>
     Ring_buffer<T>::Ring_buffer(const Ring_buffer<T>& other)
         : front_index{ other.front_index },
         back_index{ other.back_index },
-        front_ptr{ container.data() + front_index }, 
+        front_ptr{ container.data() + front_index },
         back_ptr{ container.data() + back_index }
     {
         std::ranges::copy(other.container.begin(), other.container.end(), std::back_inserter(container));
@@ -83,10 +83,10 @@ namespace soskary
     //Move constructor
     template <typename T>
     Ring_buffer<T>::Ring_buffer(Ring_buffer<T>&& other)
-        : front_index{ std::move(other.front_index) }, 
-        back_index{ std::move(other.back_index) }, 
-        front_ptr { container.data() + front_index },
-        back_ptr { container.data() + back_index }
+        : front_index{ std::move(other.front_index) },
+        back_index{ std::move(other.back_index) },
+        front_ptr{ container.data() + front_index },
+        back_ptr{ container.data() + back_index }
     {
         std::ranges::move(other.container, std::back_inserter(container));
         container.reserve(other.container.capacity());
@@ -155,6 +155,8 @@ namespace soskary
         }
         container.resize(new_capacity);
     }
+}
+
 
 template <typename T>
 bool operator==(const soskary::Ring_buffer<T>& a, const soskary::Ring_buffer<T>& b)
